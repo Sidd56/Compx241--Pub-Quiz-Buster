@@ -1,0 +1,10 @@
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\bin\Debug\GeographyGame.exe.config
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\bin\Debug\GeographyGame.exe
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\bin\Debug\GeographyGame.pdb
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\obj\Debug\GeographyGame.csprojAssemblyReference.cache
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\obj\Debug\GeographyGame.GeographyGame.resources
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\obj\Debug\GeographyGame.GeographyMenu.resources
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\obj\Debug\GeographyGame.Properties.Resources.resources
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\obj\Debug\GeographyGame.csproj.GenerateResource.cache
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\obj\Debug\GeographyGame.exe
+H:\COMPX241\GeograpyGameV2\GeographyGame\GeographyGame\obj\Debug\GeographyGame.pdb
