@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -17,6 +18,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             pictureBoxLogo.Image = Properties.Resources.Pub_Quiz_Buster_Logo;
+            //SoundPlayer simpleSound = new SoundPlayer("C:\\Users\\Jeffrey Luo\\Documents\\2021\\2021 Programs\\Pub Quiz\\Nintendo-Wii-Mii-Channel-Theme.wav");
+            //simpleSound.Play();
         }
 
         private void buttonPlayMusicalBingo_Click(object sender, EventArgs e)
