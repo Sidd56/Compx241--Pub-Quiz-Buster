@@ -59,11 +59,10 @@
             this.comboBoxDecades.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDecades.FormattingEnabled = true;
             this.comboBoxDecades.Items.AddRange(new object[] {
-            "60s",
-            "70s",
-            "80s",
-            "80s",
-            "90s",
+            "1960-1969",
+            "1970-1979",
+            "1980-1989",
+            "1990-1999",
             "2000-2009",
             "2010-2019",
             "2020-2021"});

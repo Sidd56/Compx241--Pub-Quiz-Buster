@@ -150,6 +150,7 @@
             // 
             // musicPlayer
             // 
+            this.musicPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.musicPlayer.Enabled = true;
             this.musicPlayer.Location = new System.Drawing.Point(432, 147);
             this.musicPlayer.Name = "musicPlayer";

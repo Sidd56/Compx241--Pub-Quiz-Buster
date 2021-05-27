@@ -107,23 +107,26 @@ namespace Pub_Busters___Musical_Bingo
             }
             DeleteFiles();
             progressBarLoading.Value = 0;
+            string videoPath = Directory.GetCurrentDirectory() + "\\";
             foreach (SongData s in popData)
             {
                 labelDownload.Visible = true;
                 //SaveMP4("C:\\Users\\Jeffrey Luo\\Documents\\2021\\2021 Programs\\Pub Quiz\\", s.YoutubeLink, "Song" + s.SongID);
-                SaveMP4(@"", s.YoutubeLink, "Song" + s.SongID);
+                //SaveMP4(@"..", s.YoutubeLink, "Song" + s.SongID);
+                SaveMP4(videoPath, s.YoutubeLink, "Song" + s.SongID);
                 progressBarLoading.Value += 100 / popData.Count;
             }
+
             labelDownload.Visible = false;
             progressBarLoading.Value = progressBarLoading.Maximum;
 
-            Musical_Bingo b = new Musical_Bingo(popData);
+            Musical_Bingo b = new Musical_Bingo(popData, videoPath);
             b.Show();
         }
 
         private void DeleteFiles()
         {
-            foreach (string mFile in Directory.GetFiles(@"", "*.mp4"))
+            foreach (string mFile in Directory.GetFiles(Directory.GetCurrentDirectory() + "\\", "*.mp4"))
             {
                 File.Delete(mFile);
             }

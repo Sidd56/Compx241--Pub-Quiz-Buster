@@ -30,6 +30,7 @@ namespace Pub_Busters___Musical_Bingo
         List<SongData> shuffledMusic = new List<SongData>();
 
         SongData currentPlayedMusic;
+        string mp4Path = "";
 
         int musicPlayedIndex = 0;
 
@@ -38,10 +39,11 @@ namespace Pub_Busters___Musical_Bingo
         int squareWidthSize = 0;
         int squareHeightSize = 0;
 
-        public Musical_Bingo(List<SongData> data)
+        public Musical_Bingo(List<SongData> data, string videoPath)
         {
             InitializeComponent();
             popData = data;
+            mp4Path = videoPath;
         }
 
         private void buttonStartGame_Click(object sender, EventArgs e)
@@ -89,7 +91,8 @@ namespace Pub_Busters___Musical_Bingo
                 }
 
                 currentPlayedMusic = shuffledMusic[0];
-                musicPlayer.URL = "C:\\Users\\Jeffrey Luo\\Documents\\2021\\2021 Programs\\Pub Quiz\\" + "Song" + currentPlayedMusic.SongID + ".mp4";
+                musicPlayer.URL = mp4Path + "Song" + currentPlayedMusic.SongID + ".mp4";
+ 
             }
             else
             {
@@ -104,53 +107,56 @@ namespace Pub_Busters___Musical_Bingo
 
             //Get square array position of clicked square
             (int rowPos, int colPos) = b.GetArrayPosition(e.X, e.Y);
-            if (b.squares[rowPos, colPos].Data != null)
+            if (rowPos != -1 && rowPos != -1)
             {
-                //if correct
-                if (b.squares[rowPos, colPos].Correct != true)
+                if (b.squares[rowPos, colPos].Data != null)
                 {
-                    if (b.squares[rowPos, colPos].Data.ArtistName == currentPlayedMusic.ArtistName || b.squares[rowPos, colPos].Data.SongName == currentPlayedMusic.SongName)
+                    //if correct
+                    if (b.squares[rowPos, colPos].Correct != true)
                     {
-                        b.squares[rowPos, colPos].Correct = true;
-                        b.squares[rowPos, colPos].Highlight(canvas);
-                        //Removed music from the list of music to be played
-                        shuffledMusic.Remove(currentPlayedMusic);
-                        //All music on the board has been answered correctly
-                        if (shuffledMusic.Count == 0)
+                        if (b.squares[rowPos, colPos].Data.ArtistName == currentPlayedMusic.ArtistName || b.squares[rowPos, colPos].Data.SongName == currentPlayedMusic.SongName)
                         {
-                            musicPlayer.URL = "";
-                            MessageBox.Show("You can press 'start game' again and choose to be quizzed on something else");
+                            b.squares[rowPos, colPos].Correct = true;
+                            b.squares[rowPos, colPos].Highlight(canvas);
+                            //Removed music from the list of music to be played
+                            shuffledMusic.Remove(currentPlayedMusic);
+                            //All music on the board has been answered correctly
+                            if (shuffledMusic.Count == 0)
+                            {
+                                musicPlayer.URL = "";
+                                MessageBox.Show("You can press 'start game' again and choose to be quizzed on something else");
+                            }
+                            Next();
                         }
-                        Next();
+                        //if incorrect
+                        else
+                        {
+                            b.squares[rowPos, colPos].Correct = false;
+                            b.squares[rowPos, colPos].Highlight(canvas);
+                            currentIncorrectAnswerCount += 1;
+                            if (currentIncorrectAnswerCount >= 2)
+                            {
+                                buttonHint.Enabled = true;
+                            }
+                            if (currentIncorrectAnswerCount >= 3)
+                            {
+                                buttonSkip.Enabled = true;
+                            }
+                        }
                     }
-                    //if incorrect
                     else
                     {
-                        b.squares[rowPos, colPos].Correct = false;
-                        b.squares[rowPos, colPos].Highlight(canvas);
-                        currentIncorrectAnswerCount += 1;
-                        if (currentIncorrectAnswerCount >= 2)
-                        {
-                            buttonHint.Enabled = true;
-                        }
-                        if (currentIncorrectAnswerCount >= 3)
-                        {
-                            buttonSkip.Enabled = true;
-                        }
+                        MessageBox.Show("Already correct");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Already correct");
+                    MessageBox.Show("This square is empty. Please click on a different square");
                 }
             }
             else
             {
-                MessageBox.Show("This square is empty. Please click on a different square");
-            }
-            if (rowPos == -1 && colPos == -1)
-            {
-
+                MessageBox.Show("Please click on the board or click start game for the board to appear");
             }
         }
 
@@ -170,7 +176,7 @@ namespace Pub_Busters___Musical_Bingo
                 musicPlayedIndex = 0;
             }
             currentPlayedMusic = shuffledMusic[musicPlayedIndex];
-            musicPlayer.URL = "C:\\Users\\Jeffrey Luo\\Documents\\2021\\2021 Programs\\Pub Quiz\\" + "Song"+currentPlayedMusic.SongID + ".mp4";
+            musicPlayer.URL = mp4Path + "Song" + currentPlayedMusic.SongID + ".mp4";
         }
 
         private void buttonSkip_Click(object sender, EventArgs e)
@@ -198,7 +204,7 @@ namespace Pub_Busters___Musical_Bingo
 
         private void DeleteFiles()
         {
-            foreach (string mFile in Directory.GetFiles("C:\\Users\\Jeffrey Luo\\Documents\\2021\\2021 Programs\\Pub Quiz\\", "*.mp4"))
+            foreach (string mFile in Directory.GetFiles(mp4Path, "*.mp4"))
             {
                 File.Delete(mFile);
             }
