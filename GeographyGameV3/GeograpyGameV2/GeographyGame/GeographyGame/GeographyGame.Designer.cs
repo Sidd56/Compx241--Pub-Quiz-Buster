@@ -31,7 +31,8 @@
             this.pictureBoxDisplay = new System.Windows.Forms.PictureBox();
             this.labelCountryName = new System.Windows.Forms.Label();
             this.trackBarCountryStat = new System.Windows.Forms.TrackBar();
-            this.labelStat = new System.Windows.Forms.Label();
+            this.lblStatType = new System.Windows.Forms.Label();
+            this.statLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCountryStat)).BeginInit();
             this.SuspendLayout();
@@ -68,21 +69,31 @@
             this.trackBarCountryStat.Value = 4;
             this.trackBarCountryStat.Scroll += new System.EventHandler(this.trackBarCountryStat_Scroll);
             // 
-            // labelStat
+            // lblStatType
             // 
-            this.labelStat.AutoSize = true;
-            this.labelStat.Location = new System.Drawing.Point(12, 67);
-            this.labelStat.Name = "labelStat";
-            this.labelStat.Size = new System.Drawing.Size(35, 13);
-            this.labelStat.TabIndex = 3;
-            this.labelStat.Text = "label1";
+            this.lblStatType.AutoSize = true;
+            this.lblStatType.Location = new System.Drawing.Point(12, 67);
+            this.lblStatType.Name = "lblStatType";
+            this.lblStatType.Size = new System.Drawing.Size(35, 13);
+            this.lblStatType.TabIndex = 3;
+            this.lblStatType.Text = "label1";
+            // 
+            // statLabel
+            // 
+            this.statLabel.AutoSize = true;
+            this.statLabel.Location = new System.Drawing.Point(66, 67);
+            this.statLabel.Name = "statLabel";
+            this.statLabel.Size = new System.Drawing.Size(35, 13);
+            this.statLabel.TabIndex = 4;
+            this.statLabel.Text = "label1";
             // 
             // GeographyGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 545);
-            this.Controls.Add(this.labelStat);
+            this.Controls.Add(this.statLabel);
+            this.Controls.Add(this.lblStatType);
             this.Controls.Add(this.trackBarCountryStat);
             this.Controls.Add(this.labelCountryName);
             this.Controls.Add(this.pictureBoxDisplay);
@@ -100,6 +111,7 @@
         private System.Windows.Forms.PictureBox pictureBoxDisplay;
         private System.Windows.Forms.Label labelCountryName;
         private System.Windows.Forms.TrackBar trackBarCountryStat;
-        private System.Windows.Forms.Label labelStat;
+        private System.Windows.Forms.Label lblStatType;
+        private System.Windows.Forms.Label statLabel;
     }
 }

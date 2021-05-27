@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
 
 namespace GeographyGame
 {
@@ -42,6 +43,7 @@ namespace GeographyGame
             _trueY = trueY;
             _trueStat = stat;
             _statType = statType;
+            Move(x, y);
         }
         public bool Delete
         {
@@ -89,11 +91,34 @@ namespace GeographyGame
         }
 
 
-        public void Draw(Graphics paper)
+        public void Draw(Graphics paper,string continent)
         {
+            string directory = Directory.GetCurrentDirectory() + @"..\..\..\";
+            string filename;
             //The image of the country will be displayed to paper
+            if (continent == "South America")
+            { 
+                DirectoryInfo d = new DirectoryInfo(directory + @"SA\");
+                FileInfo[] Files = d.GetFiles("*");
+                foreach (var item in Files)
+                {
+                    filename = item.Name;
+                    Image img = Image.FromFile(filename);
+                    paper.DrawImage(img, _x, _y, img.Width, img.Height);
+                }
+            }
+            if (continent == "Europe")
+            {
+                DirectoryInfo d = new DirectoryInfo(directory + @"Europe\");
+                FileInfo[] Files = d.GetFiles("*");
+                foreach (var item in Files)
+                {
+                    filename = item.Name;
+                    Image img = Image.FromFile(filename);
+                    paper.DrawImage(img, _x, _y, img.Width, img.Height);
+                }
+            }
         }
-
         public void Move(int x, int y)
         {
             X = x;

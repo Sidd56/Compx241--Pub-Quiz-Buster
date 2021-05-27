@@ -20,7 +20,7 @@ namespace GeographyGame
 
         private void GeographyMenu_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Github here");
+         
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace GeographyGame
             }
             else
             {
-                MessageBox.Show("Please select a continent");//git this bish
+                MessageBox.Show("Please select a continent");
             }
         }
 
