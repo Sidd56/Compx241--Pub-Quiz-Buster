@@ -51,7 +51,7 @@ namespace Pub_Busters___Musical_Bingo
             if (radioButtonSongNames.Checked == true || radioButtonArtistNames.Checked == true)
             {
                 labelMessage.Visible = false;
-                buttonHint.Enabled = false;
+                buttonHint.Enabled = true;
                 buttonSkip.Enabled = false;
 
                 //Set the square dimensions to the current picturebox dimensions
@@ -134,11 +134,7 @@ namespace Pub_Busters___Musical_Bingo
                             b.squares[rowPos, colPos].Correct = false;
                             b.squares[rowPos, colPos].Highlight(canvas);
                             currentIncorrectAnswerCount += 1;
-                            if (currentIncorrectAnswerCount >= 2)
-                            {
-                                buttonHint.Enabled = true;
-                            }
-                            if (currentIncorrectAnswerCount >= 3)
+                            if (currentIncorrectAnswerCount >= 1)
                             {
                                 buttonSkip.Enabled = true;
                             }
@@ -164,7 +160,6 @@ namespace Pub_Busters___Musical_Bingo
         {
             currentIncorrectAnswerCount = 0;
             labelMessage.Visible = false;
-            buttonHint.Enabled = false;
             buttonSkip.Enabled = false;
             if (shuffledMusic.Count == 0)
             {

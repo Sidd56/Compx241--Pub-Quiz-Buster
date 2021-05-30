@@ -90,7 +90,7 @@
             this.buttonSkip.Name = "buttonSkip";
             this.buttonSkip.Size = new System.Drawing.Size(240, 41);
             this.buttonSkip.TabIndex = 33;
-            this.buttonSkip.Text = "Skip";
+            this.buttonSkip.Text = "Skip Current Song";
             this.buttonSkip.UseVisualStyleBackColor = true;
             this.buttonSkip.Click += new System.EventHandler(this.buttonSkip_Click);
             // 
@@ -132,7 +132,7 @@
             this.buttonHint.Name = "buttonHint";
             this.buttonHint.Size = new System.Drawing.Size(240, 41);
             this.buttonHint.TabIndex = 41;
-            this.buttonHint.Text = "Hint";
+            this.buttonHint.Text = "Get Hint";
             this.buttonHint.UseVisualStyleBackColor = true;
             this.buttonHint.Click += new System.EventHandler(this.buttonHint_Click);
             // 

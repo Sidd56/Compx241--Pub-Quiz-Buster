@@ -116,6 +116,7 @@
             this.Controls.Add(this.progressBarLoading);
             this.Controls.Add(this.comboBoxDecades);
             this.Controls.Add(this.buttonStartGame);
+            this.MinimumSize = new System.Drawing.Size(413, 280);
             this.Name = "Music_Menu";
             this.Text = "Pub Quiz Busters - Music Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Music_Menu_FormClosing);
