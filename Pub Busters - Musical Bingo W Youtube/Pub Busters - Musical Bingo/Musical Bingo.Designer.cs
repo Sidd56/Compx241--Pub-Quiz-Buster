@@ -38,6 +38,7 @@
             this.buttonHint = new System.Windows.Forms.Button();
             this.labelMessage = new System.Windows.Forms.Label();
             this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.buttonExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +87,7 @@
             this.buttonSkip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSkip.Enabled = false;
             this.buttonSkip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonSkip.Location = new System.Drawing.Point(497, 439);
+            this.buttonSkip.Location = new System.Drawing.Point(497, 437);
             this.buttonSkip.Name = "buttonSkip";
             this.buttonSkip.Size = new System.Drawing.Size(240, 41);
             this.buttonSkip.TabIndex = 33;
@@ -158,11 +159,28 @@
             this.musicPlayer.Size = new System.Drawing.Size(356, 224);
             this.musicPlayer.TabIndex = 43;
             // 
+            // buttonExit
+            // 
+            this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExit.BackColor = System.Drawing.Color.DarkOrchid;
+            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
+            this.buttonExit.Location = new System.Drawing.Point(715, 516);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(73, 41);
+            this.buttonExit.TabIndex = 44;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
             // Musical_Bingo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 576);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.musicPlayer);
             this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.buttonHint);
@@ -194,6 +212,7 @@
         private System.Windows.Forms.Button buttonHint;
         private System.Windows.Forms.Label labelMessage;
         private AxWMPLib.AxWindowsMediaPlayer musicPlayer;
+        private System.Windows.Forms.Button buttonExit;
     }
 }
 

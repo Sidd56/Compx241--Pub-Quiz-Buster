@@ -9,16 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-using MySql.Data.MySqlClient;
-using MySqlCommand = MySql.Data.MySqlClient.MySqlCommand;
-using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
-using MySqlDataAdapter = MySql.Data.MySqlClient.MySqlDataAdapter;
-using MySqlDataReader = MySql.Data.MySqlClient.MySqlDataReader;
-
-using MediaToolkit;
-using MediaToolkit.Model;
-using VideoLibrary;
-
 namespace Pub_Busters___Musical_Bingo
 {
     public partial class Musical_Bingo : Form
@@ -34,11 +24,8 @@ namespace Pub_Busters___Musical_Bingo
 
         int musicPlayedIndex = 0;
 
-        int currentIncorrectAnswerCount = 0;
-
         int squareWidthSize = 0;
         int squareHeightSize = 0;
-
         public Musical_Bingo(List<SongData> data, string videoPath)
         {
             InitializeComponent();
@@ -66,8 +53,8 @@ namespace Pub_Busters___Musical_Bingo
                 boardDrawn = true;
 
                 BingoAnswers ba = new BingoAnswers(popData);
-                
-                //Don't need to randomise bingo answers here
+
+                //Randomising the text on the board
                 List<SongData> randomAnswers = ba.ShuffleAnswers();
                 if (radioButtonSongNames.Checked == true)
                 {
@@ -78,8 +65,6 @@ namespace Pub_Busters___Musical_Bingo
                     ba.AssignAnswers(b, randomAnswers, false, true);
                 }
 
-                shuffledMusic = ba.ShuffleAnswers();
-
                 //Putting the text on the squares
                 for (int i = 0; i < b.NUM_SQUARES_ON_SIDE; i++)
                 {
@@ -89,9 +74,12 @@ namespace Pub_Busters___Musical_Bingo
                     }
                 }
 
+                //Shuffling the music to be played
+                shuffledMusic = ba.ShuffleAnswers();
+
+                //Play the first music
                 currentPlayedMusic = shuffledMusic[0];
                 musicPlayer.URL = mp4Path + "Song" + currentPlayedMusic.SongID + ".mp4";
- 
             }
             else
             {
@@ -123,6 +111,7 @@ namespace Pub_Busters___Musical_Bingo
                             if (shuffledMusic.Count == 0)
                             {
                                 musicPlayer.URL = "";
+                                MessageBox.Show("Bingo!");
                                 MessageBox.Show("You can press 'start game' again and choose to be quizzed on something else");
                             }
                             Next();
@@ -132,11 +121,7 @@ namespace Pub_Busters___Musical_Bingo
                         {
                             b.squares[rowPos, colPos].Correct = false;
                             b.squares[rowPos, colPos].Highlight(canvas);
-                            currentIncorrectAnswerCount += 1;
-                            if (currentIncorrectAnswerCount >= 1)
-                            {
-                                buttonSkip.Enabled = true;
-                            }
+                            buttonSkip.Enabled = true;
                         }
                     }
                     else
@@ -157,7 +142,6 @@ namespace Pub_Busters___Musical_Bingo
 
         private void Next()
         {
-            currentIncorrectAnswerCount = 0;
             labelMessage.Visible = false;
             buttonSkip.Enabled = false;
             if (shuffledMusic.Count == 0)
@@ -165,10 +149,12 @@ namespace Pub_Busters___Musical_Bingo
                 return;
             }
             musicPlayedIndex++;
+            //if reached end of shuffled list, play music at first index
             if (musicPlayedIndex > shuffledMusic.Count - 1)
             {
                 musicPlayedIndex = 0;
             }
+            //Play the next music
             currentPlayedMusic = shuffledMusic[musicPlayedIndex];
             musicPlayer.URL = mp4Path + "Song" + currentPlayedMusic.SongID + ".mp4";
         }
@@ -213,6 +199,11 @@ namespace Pub_Busters___Musical_Bingo
         {
             labelMessage.Visible = true;
             labelMessage.Text = "Hint: This song topped the charts in the year, " + currentPlayedMusic.YearCharted.ToString();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
