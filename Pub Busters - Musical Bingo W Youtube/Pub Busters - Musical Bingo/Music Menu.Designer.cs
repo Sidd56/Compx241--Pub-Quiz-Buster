@@ -33,6 +33,7 @@
             this.progressBarLoading = new System.Windows.Forms.ProgressBar();
             this.labelSelectDecade = new System.Windows.Forms.Label();
             this.labelDownload = new System.Windows.Forms.Label();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonStartGame
@@ -106,11 +107,28 @@
             this.labelDownload.Text = "Downloading songs, please wait...";
             this.labelDownload.Visible = false;
             // 
+            // buttonExit
+            // 
+            this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExit.BackColor = System.Drawing.Color.DarkOrchid;
+            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
+            this.buttonExit.Location = new System.Drawing.Point(312, 188);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(73, 41);
+            this.buttonExit.TabIndex = 43;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
             // Music_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 241);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.labelDownload);
             this.Controls.Add(this.labelSelectDecade);
             this.Controls.Add(this.progressBarLoading);
@@ -118,7 +136,7 @@
             this.Controls.Add(this.buttonStartGame);
             this.MinimumSize = new System.Drawing.Size(413, 280);
             this.Name = "Music_Menu";
-            this.Text = "Pub Quiz Busters - Music Menu";
+            this.Text = "Pub Quiz Buster - Music Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Music_Menu_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -132,5 +150,6 @@
         private System.Windows.Forms.ProgressBar progressBarLoading;
         private System.Windows.Forms.Label labelSelectDecade;
         private System.Windows.Forms.Label labelDownload;
+        private System.Windows.Forms.Button buttonExit;
     }
 }

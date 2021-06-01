@@ -174,7 +174,7 @@
             this.Controls.Add(this.pictureBoxBoard);
             this.MinimumSize = new System.Drawing.Size(816, 615);
             this.Name = "Musical_Bingo";
-            this.Text = "Pub Quiz Busters - Musical Bingo";
+            this.Text = "Pub Quiz Buster - Musical Bingo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Musical_Bingo_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBoard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).EndInit();

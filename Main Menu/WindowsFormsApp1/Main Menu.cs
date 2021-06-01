@@ -1,4 +1,5 @@
 ﻿using Pub_Busters___Musical_Bingo;
+using GeographyGame;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,21 +13,29 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormMainMenu : Form
+    public partial class Main_Menu : Form
     {
-        public FormMainMenu()
+        public Main_Menu()
         {
             InitializeComponent();
             pictureBoxLogo.Image = Properties.Resources.Pub_Quiz_Buster_Logo;
-            //SoundPlayer simpleSound = new SoundPlayer("C:\\Users\\Jeffrey Luo\\Documents\\2021\\2021 Programs\\Pub Quiz\\Nintendo-Wii-Mii-Channel-Theme.wav");
-            //simpleSound.Play();
+        }
+
+        private void buttonGeography_Click(object sender, EventArgs e)
+        {
+            Geography_Menu g = new Geography_Menu();
+            g.ShowDialog();
         }
 
         private void buttonPlayMusicalBingo_Click(object sender, EventArgs e)
         {
             Music_Menu b = new Music_Menu();
-            this.Hide();
-            b.Show();
+            b.ShowDialog();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

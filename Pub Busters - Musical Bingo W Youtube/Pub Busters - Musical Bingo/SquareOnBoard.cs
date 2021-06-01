@@ -125,8 +125,6 @@ namespace Pub_Busters___Musical_Bingo
             //Draws the grid square
             paper.DrawRectangle(dottedLinePen, square);
             paper.DrawString(Text, TEXT_FONT, TEXT_BRUSH, square);
-
-
         }
     }
 }

@@ -60,7 +60,6 @@ namespace Pub_Busters___Musical_Bingo
                 b.SquareWidthSize = squareWidthSize;
                 b.SquareHeightSize = squareHeightSize;
 
-                //musicPlayer.URL = "C:\\Users\\Jeffrey Luo\\Documents\\2021\\2021 Programs\\Pub Quiz\\Musical Bingo Quiz_Test\\Adele - Rolling in the Deep (Official Music Video).mp4";
                 Graphics canvas = pictureBoxBoard.CreateGraphics();
                 b.DrawBoard(canvas, true);
                 //Enables the board to be resized;
