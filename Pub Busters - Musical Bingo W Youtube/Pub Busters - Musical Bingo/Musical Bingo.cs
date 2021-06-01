@@ -159,6 +159,12 @@ namespace Pub_Busters___Musical_Bingo
             musicPlayer.URL = mp4Path + "Song" + currentPlayedMusic.SongID + ".mp4";
         }
 
+        private void buttonHint_Click(object sender, EventArgs e)
+        {
+            labelMessage.Visible = true;
+            labelMessage.Text = "Hint: This song topped the charts in the year, " + currentPlayedMusic.YearCharted.ToString();
+        }
+
         private void buttonSkip_Click(object sender, EventArgs e)
         {
             Next();
@@ -192,13 +198,8 @@ namespace Pub_Busters___Musical_Bingo
 
         private void Musical_Bingo_FormClosing(object sender, FormClosingEventArgs e)
         {
+            musicPlayer.URL = "";
             DeleteFiles();
-        }
-
-        private void buttonHint_Click(object sender, EventArgs e)
-        {
-            labelMessage.Visible = true;
-            labelMessage.Text = "Hint: This song topped the charts in the year, " + currentPlayedMusic.YearCharted.ToString();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
