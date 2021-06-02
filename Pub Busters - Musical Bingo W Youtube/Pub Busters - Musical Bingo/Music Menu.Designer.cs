@@ -97,18 +97,18 @@
             // 
             this.labelDownload.AutoSize = true;
             this.labelDownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelDownload.Location = new System.Drawing.Point(62, 200);
+            this.labelDownload.Location = new System.Drawing.Point(13, 209);
             this.labelDownload.Name = "labelDownload";
-            this.labelDownload.Size = new System.Drawing.Size(247, 20);
+            this.labelDownload.Size = new System.Drawing.Size(372, 20);
             this.labelDownload.TabIndex = 42;
-            this.labelDownload.Text = "Downloading songs, please wait...";
+            this.labelDownload.Text = "Downloading songs to program folder, please wait...";
             this.labelDownload.Visible = false;
             // 
             // buttonExit
             // 
             this.buttonExit.BackColor = System.Drawing.Color.DarkOrchid;
             this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
-            this.buttonExit.Location = new System.Drawing.Point(312, 188);
+            this.buttonExit.Location = new System.Drawing.Point(312, 156);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(73, 41);
             this.buttonExit.TabIndex = 43;

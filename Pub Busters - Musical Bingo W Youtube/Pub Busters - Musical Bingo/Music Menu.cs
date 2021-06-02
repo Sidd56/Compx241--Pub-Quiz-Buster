@@ -75,6 +75,7 @@ namespace Pub_Busters___Musical_Bingo
             {
                 if (radioButtonYearRange.Checked == true || radioButtonDecade.Checked == true)
                 {
+                    bool songFound = false;
                     string mySql = "";
                     if (radioButtonYearRange.Checked == true)
                     {
@@ -105,13 +106,25 @@ namespace Pub_Busters___Musical_Bingo
                         ConnectWithDatabase(mySql);
                         if (popData.Count > 0)
                         {
-                            DeleteFiles();
                             progressBarLoading.Value = 0;
+                            //Same directory of the executable file
                             string videoPath = Directory.GetCurrentDirectory() + "\\";
+                            //Check if the song already exists in the directory
                             foreach (SongData s in popData)
                             {
+                                songFound = false;
                                 labelDownload.Visible = true;
-                                SaveMP4(videoPath, s.YoutubeLink, "Song" + s.SongID);
+                                foreach (string mFile in Directory.GetFiles(Directory.GetCurrentDirectory() + "\\","Song" + s.SongID + ".mp4"))
+                                {
+                                     songFound = true;
+                                     break;
+                                }
+
+                                //Song not found, so download the mp4 of the song
+                                if (songFound == false)
+                                {
+                                    SaveMP4(videoPath, s.YoutubeLink, "Song" + s.SongID);
+                                }
                                 progressBarLoading.Value += 100 / popData.Count;
                             }
 
@@ -139,14 +152,6 @@ namespace Pub_Busters___Musical_Bingo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void DeleteFiles()
-        {
-            foreach (string mFile in Directory.GetFiles(Directory.GetCurrentDirectory() + "\\", "*.mp4"))
-            {
-                File.Delete(mFile);
             }
         }
 
@@ -183,7 +188,11 @@ namespace Pub_Busters___Musical_Bingo
 
         private void Music_Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DeleteFiles();
+            if (popData != null && popData.Count > 0)
+            {
+                AskSongDelete d = new AskSongDelete(popData);
+                d.ShowDialog();
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

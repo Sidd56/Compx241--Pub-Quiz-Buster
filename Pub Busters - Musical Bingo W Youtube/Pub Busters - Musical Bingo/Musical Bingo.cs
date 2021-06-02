@@ -26,6 +26,9 @@ namespace Pub_Busters___Musical_Bingo
 
         int squareWidthSize = 0;
         int squareHeightSize = 0;
+
+        bool quizArtistNames = false;
+        bool quizSongNames = false;
         public Musical_Bingo(List<SongData> data, string videoPath)
         {
             InitializeComponent();
@@ -37,6 +40,14 @@ namespace Pub_Busters___Musical_Bingo
         {
             if (radioButtonSongNames.Checked == true || radioButtonArtistNames.Checked == true)
             {
+                if (radioButtonArtistNames.Checked == true)
+                {
+                    quizArtistNames = true;
+                }
+                else
+                {
+                    quizSongNames = true;
+                }
                 labelMessage.Visible = false;
                 buttonHint.Enabled = true;
                 buttonSkip.Enabled = false;
@@ -101,7 +112,8 @@ namespace Pub_Busters___Musical_Bingo
                     //if correct
                     if (b.squares[rowPos, colPos].Correct != true)
                     {
-                        if (b.squares[rowPos, colPos].Data.ArtistName == currentPlayedMusic.ArtistName || b.squares[rowPos, colPos].Data.SongName == currentPlayedMusic.SongName)
+                        if (quizArtistNames && b.squares[rowPos, colPos].Data.ArtistName == currentPlayedMusic.ArtistName 
+                            || quizSongNames && b.squares[rowPos, colPos].Data.SongName == currentPlayedMusic.SongName)
                         {
                             b.squares[rowPos, colPos].Correct = true;
                             b.squares[rowPos, colPos].Highlight(canvas);
@@ -212,18 +224,19 @@ namespace Pub_Busters___Musical_Bingo
             }
         }
 
-        private void DeleteFiles()
-        {
-            foreach (string mFile in Directory.GetFiles(mp4Path, "*.mp4"))
-            {
-                File.Delete(mFile);
-            }
-        }
-
+        /// <summary>
+        /// Closing by top right x
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Musical_Bingo_FormClosing(object sender, FormClosingEventArgs e)
         {
             musicPlayer.URL = "";
-            DeleteFiles();
+            if (popData != null && popData.Count > 0)
+            {
+                AskSongDelete d = new AskSongDelete(popData);
+                d.ShowDialog();
+            }      
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
