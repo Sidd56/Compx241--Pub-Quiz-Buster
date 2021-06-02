@@ -44,9 +44,6 @@
             // 
             // buttonStartGame
             // 
-            this.buttonStartGame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonStartGame.BackColor = System.Drawing.Color.DarkOrchid;
             this.buttonStartGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
             this.buttonStartGame.Location = new System.Drawing.Point(66, 109);
@@ -60,9 +57,6 @@
             // 
             // comboBoxDecades
             // 
-            this.comboBoxDecades.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxDecades.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDecades.FormattingEnabled = true;
             this.comboBoxDecades.Items.AddRange(new object[] {
@@ -81,9 +75,6 @@
             // 
             // progressBarLoading
             // 
-            this.progressBarLoading.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBarLoading.Location = new System.Drawing.Point(66, 156);
             this.progressBarLoading.Name = "progressBarLoading";
             this.progressBarLoading.Size = new System.Drawing.Size(240, 41);
@@ -104,7 +95,6 @@
             // 
             // labelDownload
             // 
-            this.labelDownload.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelDownload.AutoSize = true;
             this.labelDownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelDownload.Location = new System.Drawing.Point(62, 200);
@@ -116,9 +106,6 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExit.BackColor = System.Drawing.Color.DarkOrchid;
             this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
             this.buttonExit.Location = new System.Drawing.Point(312, 188);

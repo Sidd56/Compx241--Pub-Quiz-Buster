@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{597643A2-6118-4CEF-875F-ACCED941633E}</ProjectGuid>
+    <ProjectGuid>{E302C468-AECE-404B-B774-660C206A5B52}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WindowsFormsApp1</RootNamespace>
-    <AssemblyName>WindowsFormsApp1</AssemblyName>
+    <RootNamespace>Main_Menu___Game_Selection</RootNamespace>
+    <AssemblyName>Main Menu - Game Selection</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -81,17 +81,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Pub Quiz Buster Logo.png" />
+    <ProjectReference Include="..\..\GeographyGame\GeographyGame\GeographyGame.csproj">
+      <Project>{32CD6A17-4E64-4E76-8E93-5583D2C807E1}</Project>
+      <Name>GeographyGame</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pub Busters - Musical Bingo W Youtube\Pub Busters - Musical Bingo\Pub Busters - Musical Bingo.csproj">
+      <Project>{A49EE296-288A-4036-9795-0719E365541E}</Project>
+      <Name>Pub Busters - Musical Bingo</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\GeographyGame\GeographyGame\Geography Game.csproj">
-      <Project>{32CD6A17-4E64-4E76-8E93-5583D2C807E1}</Project>
-      <Name>Geography Game</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Pub Busters - Musical Bingo W Youtube\Pub Busters - Musical Bingo\Musical Bingo.csproj">
-      <Project>{A49EE296-288A-4036-9795-0719E365541E}</Project>
-      <Name>Musical Bingo</Name>
-    </ProjectReference>
+    <None Include="Resources\Pub Quiz Buster Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

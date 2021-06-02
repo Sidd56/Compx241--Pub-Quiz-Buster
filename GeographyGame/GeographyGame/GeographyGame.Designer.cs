@@ -1,6 +1,6 @@
 ﻿namespace GeographyGame
 {
-    partial class Geography_Game
+    partial class GeographyGame
     {
         /// <summary>
         /// Required designer variable.
@@ -33,18 +33,23 @@
             this.trackBarCountryStat = new System.Windows.Forms.TrackBar();
             this.lblStatType = new System.Windows.Forms.Label();
             this.statLabel = new System.Windows.Forms.Label();
+            this.labelX = new System.Windows.Forms.Label();
+            this.labelY = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCountryStat)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxDisplay
             // 
-            this.pictureBoxDisplay.Location = new System.Drawing.Point(172, 37);
+            this.pictureBoxDisplay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxDisplay.Location = new System.Drawing.Point(172, 12);
             this.pictureBoxDisplay.Name = "pictureBoxDisplay";
-            this.pictureBoxDisplay.Size = new System.Drawing.Size(728, 429);
+            this.pictureBoxDisplay.Size = new System.Drawing.Size(790, 521);
             this.pictureBoxDisplay.TabIndex = 0;
             this.pictureBoxDisplay.TabStop = false;
             this.pictureBoxDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.pictureBoxDisplay.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxDisplay_MouseClick);
             this.pictureBoxDisplay.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBoxDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBoxDisplay.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
@@ -87,17 +92,37 @@
             this.statLabel.TabIndex = 4;
             this.statLabel.Text = "label1";
             // 
-            // Geography_Game
+            // labelX
+            // 
+            this.labelX.AutoSize = true;
+            this.labelX.Location = new System.Drawing.Point(15, 214);
+            this.labelX.Name = "labelX";
+            this.labelX.Size = new System.Drawing.Size(17, 13);
+            this.labelX.TabIndex = 5;
+            this.labelX.Text = "X:";
+            // 
+            // labelY
+            // 
+            this.labelY.AutoSize = true;
+            this.labelY.Location = new System.Drawing.Point(15, 237);
+            this.labelY.Name = "labelY";
+            this.labelY.Size = new System.Drawing.Size(17, 13);
+            this.labelY.TabIndex = 6;
+            this.labelY.Text = "Y:";
+            // 
+            // GeographyGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 545);
+            this.Controls.Add(this.labelY);
+            this.Controls.Add(this.labelX);
             this.Controls.Add(this.statLabel);
             this.Controls.Add(this.lblStatType);
             this.Controls.Add(this.trackBarCountryStat);
             this.Controls.Add(this.labelCountryName);
             this.Controls.Add(this.pictureBoxDisplay);
-            this.Name = "Geography_Game";
+            this.Name = "GeographyGame";
             this.Text = "GeographyGame";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisplay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCountryStat)).EndInit();
@@ -113,5 +138,7 @@
         private System.Windows.Forms.TrackBar trackBarCountryStat;
         private System.Windows.Forms.Label lblStatType;
         private System.Windows.Forms.Label statLabel;
+        private System.Windows.Forms.Label labelX;
+        private System.Windows.Forms.Label labelY;
     }
 }

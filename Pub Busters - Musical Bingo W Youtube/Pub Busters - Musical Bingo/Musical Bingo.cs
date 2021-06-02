@@ -105,6 +105,16 @@ namespace Pub_Busters___Musical_Bingo
                         {
                             b.squares[rowPos, colPos].Correct = true;
                             b.squares[rowPos, colPos].Highlight(canvas);
+                            for (int i = 0; i < b.NUM_SQUARES_ON_SIDE; i++)
+                            {
+                                for (int j = 0; j < b.NUM_SQUARES_ON_SIDE; j++)
+                                {
+                                    if (b.squares[i, j].Correct != true)
+                                    {
+                                        b.squares[i, j].Draw(canvas, Color.LightYellow);
+                                    }
+                                }
+                            }
                             //Removed music from the list of music to be played
                             shuffledMusic.Remove(currentPlayedMusic);
                             //All music on the board has been answered correctly
@@ -167,11 +177,25 @@ namespace Pub_Busters___Musical_Bingo
 
         private void buttonSkip_Click(object sender, EventArgs e)
         {
+            Graphics canvas = pictureBoxBoard.CreateGraphics();
+            for (int i = 0; i < b.NUM_SQUARES_ON_SIDE; i++)
+            {
+                for (int j = 0; j < b.NUM_SQUARES_ON_SIDE; j++)
+                {
+                    if (b.squares[i, j].Correct != true)
+                    {
+                        b.squares[i, j].Draw(canvas, Color.LightYellow);
+                    }
+                }
+            }
             Next();
         }
 
         private void pictureBoxBoard_SizeChanged(object sender, EventArgs e)
         {
+            //Quickly make the music player reappear to remove the previous blank background
+            musicPlayer.Visible = false;
+            musicPlayer.Visible = true;
             if (boardDrawn == true)
             {
                 //Clears the board

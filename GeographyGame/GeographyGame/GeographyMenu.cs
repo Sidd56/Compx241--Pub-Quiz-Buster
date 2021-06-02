@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace GeographyGame
 {
-    public partial class Geography_Menu : Form
+    public partial class GeographyMenu : Form
     {
         string selectedContinent;
-        public Geography_Menu()
+        public GeographyMenu()
         {
             InitializeComponent();
         }
@@ -28,7 +28,7 @@ namespace GeographyGame
             selectedContinent = comboBoxContinent.Text;
             if (selectedContinent != null && selectedContinent != "")
             {
-                Form newGame = new Geography_Game(selectedContinent);
+                Form newGame = new GeographyGame(selectedContinent);
                 newGame.Show();
             }
             else
@@ -37,9 +37,6 @@ namespace GeographyGame
             }
         }
 
-        private void buttonExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+       
     }
 }

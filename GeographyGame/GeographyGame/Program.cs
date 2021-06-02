@@ -16,7 +16,7 @@ namespace GeographyGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Geography_Menu());
+            Application.Run(new GeographyMenu());
         }
     }
 }
