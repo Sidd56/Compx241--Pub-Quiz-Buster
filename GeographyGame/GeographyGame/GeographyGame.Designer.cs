@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeographyGame));
             this.pictureBoxDisplay = new System.Windows.Forms.PictureBox();
             this.labelCountryName = new System.Windows.Forms.Label();
             this.trackBarCountryStat = new System.Windows.Forms.TrackBar();
@@ -35,8 +36,11 @@
             this.statLabel = new System.Windows.Forms.Label();
             this.labelX = new System.Windows.Forms.Label();
             this.labelY = new System.Windows.Forms.Label();
+            this.pictureBoxFlag = new System.Windows.Forms.PictureBox();
+            this.lblFlag = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCountryStat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlag)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxDisplay
@@ -110,11 +114,34 @@
             this.labelY.TabIndex = 6;
             this.labelY.Text = "Y:";
             // 
+            // pictureBoxFlag
+            // 
+            this.pictureBoxFlag.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxFlag.InitialImage")));
+            this.pictureBoxFlag.Location = new System.Drawing.Point(999, 12);
+            this.pictureBoxFlag.Name = "pictureBoxFlag";
+            this.pictureBoxFlag.Size = new System.Drawing.Size(405, 656);
+            this.pictureBoxFlag.TabIndex = 7;
+            this.pictureBoxFlag.TabStop = false;
+            this.pictureBoxFlag.Click += new System.EventHandler(this.pictureBoxFlag_Click);
+            this.pictureBoxFlag.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxFlag_Paint);
+            this.pictureBoxFlag.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxFlag_MouseClick);
+            // 
+            // lblFlag
+            // 
+            this.lblFlag.AutoSize = true;
+            this.lblFlag.Location = new System.Drawing.Point(1236, 237);
+            this.lblFlag.Name = "lblFlag";
+            this.lblFlag.Size = new System.Drawing.Size(45, 13);
+            this.lblFlag.TabIndex = 8;
+            this.lblFlag.Text = "Flag of: ";
+            // 
             // GeographyGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(974, 545);
+            this.ClientSize = new System.Drawing.Size(1500, 862);
+            this.Controls.Add(this.lblFlag);
+            this.Controls.Add(this.pictureBoxFlag);
             this.Controls.Add(this.labelY);
             this.Controls.Add(this.labelX);
             this.Controls.Add(this.statLabel);
@@ -126,6 +153,7 @@
             this.Text = "GeographyGame";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisplay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCountryStat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlag)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,5 +168,7 @@
         private System.Windows.Forms.Label statLabel;
         private System.Windows.Forms.Label labelX;
         private System.Windows.Forms.Label labelY;
+        private System.Windows.Forms.PictureBox pictureBoxFlag;
+        private System.Windows.Forms.Label lblFlag;
     }
 }

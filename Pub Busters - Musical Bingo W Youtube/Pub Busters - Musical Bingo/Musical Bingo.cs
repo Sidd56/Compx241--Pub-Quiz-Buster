@@ -27,6 +27,8 @@ namespace Pub_Busters___Musical_Bingo
         int squareWidthSize = 0;
         int squareHeightSize = 0;
 
+        bool yearChartedHint = false;
+
         bool quizArtistNames = false;
         bool quizSongNames = false;
         public Musical_Bingo(List<SongData> data, string videoPath)
@@ -169,6 +171,8 @@ namespace Pub_Busters___Musical_Bingo
         private void Next()
         {
             labelMessage.Visible = false;
+            //Show either song or artist name as hint before year charted
+            yearChartedHint = false;
             buttonSkip.Enabled = false;
             if (shuffledMusic.Count == 0)
             {
@@ -188,7 +192,26 @@ namespace Pub_Busters___Musical_Bingo
         private void buttonHint_Click(object sender, EventArgs e)
         {
             labelMessage.Visible = true;
-            labelMessage.Text = "Hint: This song topped the charts in the year, " + currentPlayedMusic.YearCharted.ToString();
+            //First hint for the current played music
+            if (yearChartedHint == false)
+            {
+                //Show the other information about the song
+                if (quizArtistNames == true)
+                {
+                    labelMessage.Text = "Hint: The song name is " + currentPlayedMusic.SongName.ToString();
+                }
+                else if (quizSongNames == true)
+                {
+                    labelMessage.Text = "Hint: The artist name is " + currentPlayedMusic.ArtistName.ToString();
+                }
+                yearChartedHint = true;
+            }
+            else
+            {
+                //Show year charted
+                labelMessage.Text = "Hint: This song topped the charts in the year, " + currentPlayedMusic.YearCharted.ToString();
+                yearChartedHint = false;
+            }
         }
 
         private void buttonSkip_Click(object sender, EventArgs e)

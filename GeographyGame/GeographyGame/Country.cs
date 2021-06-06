@@ -12,12 +12,13 @@ namespace GeographyGame
     class Country
     {
 
-        int _x, _y, _currentsize, _trueX, _trueY;
+        public int _x, _y, _currentsize, _trueX, _trueY;
         Pen pen = new Pen(Color.Black);
         Brush brush = new SolidBrush(Color.Red);
-        Random numRand = new Random();
+        int _numRand;
         bool _selected = false;
         bool _delete = false;
+        bool _isCorrect = false;
         public int _statType;
         string _name;
         //The correct statistic e.g. population, land area
@@ -30,7 +31,8 @@ namespace GeographyGame
         int _correctOption;
         int currentOption;
         int num = 0;
-
+        string directory = Directory.GetCurrentDirectory() + @"..\..\..\..\";
+        string filename;
         /// <summary>
         /// Create a country
         /// </summary>
@@ -40,7 +42,7 @@ namespace GeographyGame
         /// <param name="trueX">The correct x location on the map</param>
         /// <param name="trueY">The correct y location on the map</param>
         /// <param name="stat">The number value of the statistic e.g. GDP</param>
-        public Country(string name, int x, int y, int trueX, int trueY, string continent, ulong stat, int sizeX, int sizeY, int statType)
+        public Country(string name, int x, int y, int trueX, int trueY, string continent, ulong stat, int sizeX, int sizeY, int statType, int randNum)
         {
             _name = name;
             _x = x;
@@ -53,6 +55,8 @@ namespace GeographyGame
             _sizeY = sizeY;
             _continent = continent;
             _statType = statType;
+            _numRand = randNum;
+            GenerateOptions();
             //deleted stattype since we dont need it. we can just have count the database thing
         }
         public string Stattype()
@@ -69,7 +73,7 @@ namespace GeographyGame
         private int CorrectOption
         {
             get { return _correctOption; }
-            
+
         }
         public int CurrentOption
         {
@@ -96,19 +100,24 @@ namespace GeographyGame
             get { return _selected; }
             set { _selected = value; }
         }
+        public bool IsCorrect
+        {
+            get { return _isCorrect; }
+            set { _isCorrect = value; }
+        }
         public string Continent
         {
             get { return _continent; }
         }
         public int SizeX
         {
-           get 
-            { 
-                return _sizeX; 
+            get
+            {
+                return _sizeX;
             }
-          set 
-            { 
-                _sizeX = value; 
+            set
+            {
+                _sizeX = value;
             }
         }
         public int SizeY
@@ -116,6 +125,7 @@ namespace GeographyGame
             get { return _sizeY; }
             set { _sizeY = value; }
         }
+
         public bool Delete
         {
             get { return _delete; }
@@ -136,75 +146,112 @@ namespace GeographyGame
             get { return _currentsize; }
             set { _currentsize = value; }
         }
-        private int random()
-        {
-            for (int i = 0; i < 100000;i++)
-            {
-                num = new Random().Next(0,5);                
-            }
-           return num;
-        }
         public void GenerateOptions()
         {
             double gen;
-            
-            _statOptions[random()] = 1;
-            _correctOption = num;
+
+            _statOptions[_numRand] = 1;
+            _correctOption = _numRand;
             for (int i = 0; i <= 4; i++)
             {
-                
-                if (i < num)
+
+                if (i < _numRand)
                 {
-                    gen = (double)(1.0 - (0.1 * (double)(num - i)));
+                    gen = (double)(1.0 - (0.15 * (double)(_numRand - i)));
                     _statOptions[i] = gen;
                 }
-                else if (i > num)
+                else if (i > _numRand)
                 {
-                    gen =  (1 + (0.1 * (i - num)));
+                    gen = (1 + (0.15 * (i - _numRand)));
                     _statOptions[i] = gen;
-                }                
+                }
             }
-            currentOption = random();
+            currentOption = 2;
 
             //gen = (ulong)((double)_trueStat * (double)(1.0 - (0.1 * (double)(rand - i))));
             //_statOptions[i] = gen;
         }
+        public bool isCorrect()
+        {
+
+            if (currentOption == CorrectOption)
+            {
+                if (X >= _trueX - 4 && X <= _trueX + 4)
+                {
+                    if (Y >= _trueY - 4 && Y <= _trueY + 4)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+
+            return false;
+
+        }
+        //public void DrawFlag(Graphics paper)
+        //{
+        //    DirectoryInfo directoryInfo = new DirectoryInfo(directory + @"Flags\");
+        //    FileInfo[] files = directoryInfo.GetFiles("*");
+        //    foreach (var item in files)
+        //    {
+        //        if (this._name + _continent + ".png" == item.Name)
+        //        {
+        //            filename = directoryInfo.ToString() + this._name + ".png";
+        //            Image img = new Bitmap(filename);
+        //            paper.DrawImage(img, 0, 0, (img.Width)/3, (img.Height)/3);
+        //            return;
+        //        }
+        //    }
+        //}
+        public void countryPaint(DirectoryInfo d, FileInfo item, Graphics paper)
+        {
+         
+                // if (country != null && country._name + ".png" == item.Name)
+                if (this.IsCorrect == true)
+                {
+                    filename = d.ToString() + this._name + "_Correct.png";
+                    Image img = new Bitmap(filename);
+                    paper.DrawImage(img, _trueX, _trueY, img.Width, img.Height);
+                    this._sizeX = img.Width;
+                    this._sizeY = img.Height;
+                }
+                else if (this.Selected == true)
+                {
+
+                    filename = d.ToString() + this._name + "_Selected.png";
+                    Image img = new Bitmap(filename);
+                    paper.DrawImage(img, _x, _y, (int)((img.Width * StatOptions[currentOption])), (int)((img.Height * StatOptions[currentOption])));
+                    this._sizeX = img.Width;
+                    this._sizeY = img.Height;
+                }
+                else
+                {
+
+                    if (this._name + ".png" == item.Name)
+                    {
+                        filename = d.ToString() + item.ToString();
+                        Image img = Image.FromFile(filename);
+                        paper.DrawImage(img, _x, _y, (int)((img.Width * StatOptions[currentOption])), (int)((img.Height * StatOptions[currentOption])));
+                        this._sizeX = img.Width;
+                        this._sizeY = img.Height;
+                        
+                    }
+                }
+        }
         public void Draw(Graphics paper,string continent)
         {
-            string directory = Directory.GetCurrentDirectory() + @"..\..\..\..\";
-            string filename;
+            _continent = continent;
             //The image of the country will be displayed to paper
             if (continent == "South America")
             { 
                 DirectoryInfo d = new DirectoryInfo(directory + @"SA\");
                 FileInfo[] Files = d.GetFiles("*");
-
-
                 foreach (var item in Files)
-                {            
-                   // if (country != null && country._name + ".png" == item.Name)
-                    if (this.Selected == true)
-                    {
-                            
-                            filename = d.ToString() + this._name + "_Selected.png";
-                            Image img = new Bitmap(filename);
-                            paper.DrawImage(img,_x, _y, img.Width, img.Height);
-                            this._sizeX = img.Width;
-                            this._sizeY = img.Height;
-                    }
-                    else
-                    {
-                        //if
-                        if (this._name + ".png" == item.Name)
-                        {
-                            filename = d.ToString() + item.ToString();
-                            Image img = Image.FromFile(filename);
-                            paper.DrawImage(img, _x, _y, img.Width, img.Height);
-                            this._sizeX = img.Width;
-                            this._sizeY = img.Height;
-                        }
-                    }
+                {                   
+                    countryPaint(d, item, paper);
                 }
+                
             }
             if (continent == "Europe")
             {
@@ -212,14 +259,7 @@ namespace GeographyGame
                 FileInfo[] Files = d.GetFiles("*");
                 foreach (var item in Files)
                 {
-                    if ((this._name + ".png").Equals(item.Name))
-                    {
-                        filename = d.ToString() + item.ToString();
-                        Image img = Image.FromFile(filename);
-                        paper.DrawImage(img, _x, _y, img.Width, img.Height);
-                        this.SizeX = img.Width;
-                        this.SizeY = img.Height;                       
-                    }
+                    countryPaint(d, item, paper);
                 }
             }
         }

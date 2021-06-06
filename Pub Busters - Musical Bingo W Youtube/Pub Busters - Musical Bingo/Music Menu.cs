@@ -53,7 +53,8 @@ namespace Pub_Busters___Musical_Bingo
         private void ConnectWithDatabase(string mySql)
         {
             popData = new List<SongData>();
-            string connectionstring = @"datasource=sql6.freesqldatabase.com;port=3306;database=sql6412717;username=sql6412717;password=9B8lPlBL4v";
+            //string connectionstring = @"datasource=sql6.freesqldatabase.com;port=3306;database=sql6412717;username=sql6412717;password=9B8lPlBL4v";
+            string connectionstring = @"datasource=sql6.freesqldatabase.com;port=3306;database=sql6417439;username=sql6417439;password=xlUKVETect";
             MySqlDataReader reader = null;
             MySqlConnection conn = new MySqlConnection(connectionstring);
             MySqlCommand command = new MySqlCommand(mySql, conn);
