@@ -10,7 +10,7 @@ namespace Pub_Busters___Musical_Bingo
     class Board
     {
         public SquareOnBoard[,] squares;
-        //The minimum size of the board
+        //The number of squares on each side
         public int NUM_SQUARES_ON_SIDE = 3;
 
         //Instantiate a new 2D "rectangle" array to detect whether user has clicked on them

@@ -14,7 +14,8 @@ namespace Pub_Busters___Musical_Bingo
         private int _yearCharted;
         private string _decadeOfSong;
         private string _youtubeLink;
-        public SongData(int popID, string songName, string artistName, int yearCharted, string decadeOfSong, string youtubeLink)
+        public SongData(int popID, string songName, string artistName, 
+            int yearCharted, string decadeOfSong, string youtubeLink)
         {
             _songID = popID;
             _songName = songName;

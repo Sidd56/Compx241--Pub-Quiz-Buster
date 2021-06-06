@@ -52,11 +52,14 @@ namespace Pub_Busters___Musical_Bingo
                 buttonHint.Enabled = true;
                 buttonSkip.Enabled = false;
 
-                //Set the square dimensions to the current picturebox dimensions
-                squareWidthSize = pictureBoxBoard.Width / 3;
-                squareHeightSize = pictureBoxBoard.Height / 3;
-                b.SquareWidthSize = squareWidthSize;
-                b.SquareHeightSize = squareHeightSize;
+                if (boardDrawn == false)
+                {
+                    //Set the square dimensions to the current picturebox dimensions
+                    squareWidthSize = pictureBoxBoard.Width / b.NUM_SQUARES_ON_SIDE;
+                    squareHeightSize = pictureBoxBoard.Height / b.NUM_SQUARES_ON_SIDE;
+                    b.SquareWidthSize = squareWidthSize;
+                    b.SquareHeightSize = squareHeightSize;
+                }
 
                 Graphics canvas = pictureBoxBoard.CreateGraphics();
                 b.DrawBoard(canvas, true);
@@ -109,14 +112,15 @@ namespace Pub_Busters___Musical_Bingo
             {
                 if (b.squares[rowPos, colPos].Data != null)
                 {
-                    //if correct
                     if (b.squares[rowPos, colPos].Correct != true)
                     {
+                        //if correct
                         if (quizArtistNames && b.squares[rowPos, colPos].Data.ArtistName == currentPlayedMusic.ArtistName 
                             || quizSongNames && b.squares[rowPos, colPos].Data.SongName == currentPlayedMusic.SongName)
                         {
                             b.squares[rowPos, colPos].Correct = true;
                             b.squares[rowPos, colPos].Highlight(canvas);
+                            //Make previously red or incorrect squares back to default yellow
                             for (int i = 0; i < b.NUM_SQUARES_ON_SIDE; i++)
                             {
                                 for (int j = 0; j < b.NUM_SQUARES_ON_SIDE; j++)
@@ -136,7 +140,7 @@ namespace Pub_Busters___Musical_Bingo
                                 MessageBox.Show("Bingo!");
                                 MessageBox.Show("You can press 'start game' again and choose to be quizzed on something else");
                             }
-                            Next();
+                             Next();
                         }
                         //if incorrect
                         else
@@ -190,6 +194,7 @@ namespace Pub_Busters___Musical_Bingo
         private void buttonSkip_Click(object sender, EventArgs e)
         {
             Graphics canvas = pictureBoxBoard.CreateGraphics();
+            //Make previously red or incorrect squares back to default yellow
             for (int i = 0; i < b.NUM_SQUARES_ON_SIDE; i++)
             {
                 for (int j = 0; j < b.NUM_SQUARES_ON_SIDE; j++)
@@ -225,7 +230,7 @@ namespace Pub_Busters___Musical_Bingo
         }
 
         /// <summary>
-        /// Closing by top right x
+        /// Ask if list of songs' MP4s files should be deleted
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

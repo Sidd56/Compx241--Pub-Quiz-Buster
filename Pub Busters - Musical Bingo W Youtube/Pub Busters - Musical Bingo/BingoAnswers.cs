@@ -27,15 +27,16 @@ namespace Pub_Busters___Musical_Bingo
             foreach (SongData p in _initialData)
             {
                 _newPosition = false;
+                //Get a unique random number not taken before
                 while (_newPosition == false)
                 {
                     _randomNumber = rnd.Next(0, _initialData.Count);
-
+                    //Check the object at the index in the initial list is not the new list
                     if (!_indexTaken.Contains(_randomNumber))
                     {
                         _indexTaken.Add(_randomNumber);
                         _newPosition = true;
-
+                        //Add the object at the index in the initial list to the new list
                         _randomisedAnswers.Add(_initialData[_randomNumber]);
                     }
                 }
@@ -50,13 +51,14 @@ namespace Pub_Busters___Musical_Bingo
             {
                 for (int j = 0; j < b.NUM_SQUARES_ON_SIDE; j++)
                 {
+                    //Stop assigning when there are less songs in the list than there are squares.
                     if (index > randomAnswers.Count-1)
                     {
                         return;
                     }
-
+                    //Assign the SongData object to the SquareOnBoard's Data property
                     b.squares[i, j].Data = _randomisedAnswers[index];
-
+                    //Assign the text for the square according to the SongData's Artist or Song name
                     if (quizSongName == true)
                     {
                         b.squares[i, j].Text = b.squares[i, j].Data.SongName.ToString();

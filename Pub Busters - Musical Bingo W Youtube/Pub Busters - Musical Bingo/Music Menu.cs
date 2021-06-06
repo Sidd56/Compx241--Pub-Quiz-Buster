@@ -85,7 +85,8 @@ namespace Pub_Busters___Musical_Bingo
                         yearEnd = int.Parse(textBoxEndYear.Text);
                         if (yearEnd >= yearStart)
                         {
-                            mySql = "SELECT * FROM Songs where Year_Charted between '" + yearStart + "' and '" + yearEnd + "' order by RAND() LIMIT 9";
+                            mySql = "SELECT * FROM Songs where Year_Charted between '" + yearStart + "' and '" + yearEnd + "' " +
+                                "order by RAND() LIMIT 9";
                         }
                     }
                     if (radioButtonDecade.Checked == true)
@@ -96,8 +97,8 @@ namespace Pub_Busters___Musical_Bingo
                         }
                         else
                         {
-                            mySql = "SELECT * FROM Songs where Decade_Of_Song like '" + comboBoxDecades.Text + "' order by RAND() LIMIT 9";
-
+                            mySql = "SELECT * FROM Songs where Decade_Of_Song like '" + comboBoxDecades.Text + 
+                                "' order by RAND() LIMIT 9";
                         }
                     }
                    
@@ -183,15 +184,6 @@ namespace Pub_Busters___Musical_Bingo
             else
             {
                 comboBoxDecades.Visible = false;
-            }
-        }
-
-        private void Music_Menu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (popData != null && popData.Count > 0)
-            {
-                AskSongDelete d = new AskSongDelete(popData);
-                d.ShowDialog();
             }
         }
 

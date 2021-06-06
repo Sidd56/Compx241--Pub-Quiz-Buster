@@ -203,7 +203,6 @@
             this.MinimumSize = new System.Drawing.Size(413, 280);
             this.Name = "Music_Menu";
             this.Text = "Pub Quiz Buster - Music Menu";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Music_Menu_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
