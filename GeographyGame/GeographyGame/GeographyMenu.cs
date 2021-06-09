@@ -37,6 +37,9 @@ namespace GeographyGame
             }
         }
 
-       
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

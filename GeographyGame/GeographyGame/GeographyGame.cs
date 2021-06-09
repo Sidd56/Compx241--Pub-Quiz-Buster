@@ -14,10 +14,12 @@ using MySqlCommand = MySql.Data.MySqlClient.MySqlCommand;
 using MySQLConnection = MySql.Data.MySqlClient.MySqlConnection;
 using MySQLDataAdapter = MySql.Data.MySqlClient.MySqlDataAdapter;
 using MySQLDataReader = MySql.Data.MySqlClient.MySqlDataReader;
+using System.Text.Json;
 namespace GeographyGame
 {
     public partial class GeographyGame : Form
-    {
+    {       
+
 
         List<Country> countries;
         List<Country> correctCountries = new List<Country>();
@@ -30,19 +32,21 @@ namespace GeographyGame
         List<Flags> flags;
         Flags currentFlag = null;
         int yflag = 0;
+        bool finished = false;
+        List<Flags> flagCorrect = new List<Flags>();
         public GeographyGame(string continent)
         {
 
-            InitializeComponent();
-
+            InitializeComponent();           
             int randNum;
             try
             {
                 countries = new List<Country>();
                 flags = new List<Flags>();
                 _continent = continent;
-                string connectionstring = @"datasource=sql6.freesqldatabase.com;port=3306;database=sql6412717;username=sql6412717;password=9B8lPlBL4v";
-                string mySQL = "SELECT * from Countries where Continent = '" + continent + "'";
+                labelMap.Text = "MAP OF " + _continent.ToUpper();
+                string connectionstring = @"datasource=sql6.freesqldatabase.com;port=3306;database=sql6417439;username=sql6417439;password=xlUKVETect";
+                string mySQL = "SELECT * from Countries2 where Continent = '" + continent + "'";
                 MySQLDataReader reader = null;
                 MySQLConnection conn = new MySQLConnection(connectionstring);
                 conn.Open();
@@ -51,13 +55,13 @@ namespace GeographyGame
                 reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    int X = rand.Next(500, pictureBoxDisplay.Width);
+                    int X = 0;
                     int Y = rand.Next(0, pictureBoxDisplay.Height);
-                    int StatType = rand.Next(5, 7);
-                    if (reader.GetString(3) != "" && reader.GetString(2) != "")
+                    int StatType = rand.Next(4, 6);
+                    if (reader.GetString(2) != "" && reader.GetString(3) != "")
                     {
                         randNum = rand.Next(0, 5);
-                        Country c = new Country(reader.GetString(1), X, Y, int.Parse(reader.GetString(2)), int.Parse(reader.GetString(3)), reader.GetString(4), ulong.Parse(reader.GetString(StatType)), 0, 0, StatType, randNum); flag = new Flags(c.Name, yflag);
+                        Country c = new Country(reader.GetString(0), X, Y, int.Parse(reader.GetString(2)), int.Parse(reader.GetString(3)), reader.GetString(1), ulong.Parse(reader.GetString(StatType)), 0, 0, StatType, randNum); flag = new Flags(c.Name, yflag);
                         flags.Add(flag);
                         yflag = yflag + 177;
                         countries.Add(c);
@@ -76,13 +80,28 @@ namespace GeographyGame
                 pictureBoxDisplay.BackgroundImage = new Bitmap(directory);
                 pictureBoxDisplay.Height = pictureBoxDisplay.BackgroundImage.Height;
                 pictureBoxDisplay.Width = pictureBoxDisplay.BackgroundImage.Width + 200;
+    
             }
-            pictureBoxFlag.Left = pictureBoxDisplay.Left + pictureBoxDisplay.Width + 100;
-            pictureBoxFlag.Top = pictureBoxDisplay.Height / 3;
-            lblFlag.Left = pictureBoxFlag.Left;
-            lblFlag.Top = pictureBoxFlag.Top + pictureBoxFlag.Height + 20;
+            if (continent == "Europe")
+            {
+                string directory = Directory.GetCurrentDirectory() + @"..\..\..\..\Europe\EuropeBackground.png";
+                pictureBoxDisplay.BackgroundImage = new Bitmap(directory);
+                pictureBoxDisplay.Height = pictureBoxDisplay.BackgroundImage.Height;
+                pictureBoxDisplay.Width = pictureBoxDisplay.BackgroundImage.Width + 200;
+      
+            }
+            foreach (Country c in countries)
+            {
+                c.X = pictureBoxDisplay.Width - 200;
+            }
+            pictureBoxFlag.Left = pictureBoxDisplay.Width + pictureBoxDisplay.Left;
+            //labelPieces.Top = pictureBoxFlag.Top + pictureBoxFlag.Height;
         }
-
+      
+        private void buttonGetData_Click_1(object sender, EventArgs e)
+        {
+            
+        }
         private void trackBarCountryStat_Scroll(object sender, EventArgs e)
         {
             if (prevCur != null)
@@ -120,8 +139,6 @@ namespace GeographyGame
             bool notForm = true;
             foreach (Country item in countries)
             {
-
-
                 if (item.IsMouseOn(e.X, e.Y))
                 {
                     if (prevCur != item && prevCur != null)
@@ -152,8 +169,6 @@ namespace GeographyGame
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-
-
             if (current != null)
             {
                 current.Draw(pictureBoxDisplay.CreateGraphics(), current.Name);
@@ -163,20 +178,45 @@ namespace GeographyGame
                 {
                     current.IsCorrect = true;
                     correctCountries.Add(current);
+               
+                  
                     countries.Remove(current);
                     current = null;
                     prevCur = null;
-
+                    if (countries.Count == 0)
+                    {
+                        finished = true;
+                        MessageBox.Show("Round 2: Flags!");
+                        //labelAssignFlags.Visible = true;
+                        pictureBoxFlag.Visible = true;
+                    }
                 }
             }
             pictureBoxDisplay.Invalidate();
             labelX.Text = "X:" + e.X.ToString();
             labelY.Text = "Y:" + e.Y.ToString();
-
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
+            if (countries.Count == 0)
+            {
+                Drawflags();
+            }
+            if (flags.Count == 0)
+            {
+                MessageBox.Show("Congratulations! You win!");
+                DialogResult dresult = MessageBox.Show("Exit App", "Do you want to restart?", MessageBoxButtons.YesNo);
+                if (dresult == DialogResult.Yes)
+                {
+                    MessageBox.Show("You will be prompted back to the start to choose another country");
+                    this.Hide();
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
             prevCur = current;
             current = null;
         }
@@ -186,39 +226,52 @@ namespace GeographyGame
             foreach (var item in countries)
             {
                 item.Draw(e.Graphics, _continent);
-
             }
-
-            // if (correctCountries.Count != 0)
+            foreach (var item in correctCountries)
             {
-                foreach (var item in correctCountries)
-                {
-                    item.Draw(e.Graphics, _continent);
+                item.Draw(e.Graphics, _continent);
 
-                }
             }
-
             this.Invalidate();
         }
 
         private void pictureBoxDisplay_MouseClick(object sender, MouseEventArgs e)
         {
-
+            if (currentFlag != null)
+            {
+                foreach (var item in correctCountries)
+                {
+                    if (item.IsMouseOn(e.X, e.Y))
+                    {
+                        if (currentFlag.fName == item.Name)
+                        {
+                            flagCorrect.Add(currentFlag);
+                            flags.Remove(currentFlag);
+                            currentFlag = null;
+                            item.WithFlag = true;
+                            item.Draw(this.CreateGraphics(), _continent);
+                            Drawflags();
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
         private void pictureBoxFlag_Paint(object sender, PaintEventArgs e)
         {
-            foreach (var item in flags)
+            if (countries.Count == 0)
             {
-                item.DrawFlag(e.Graphics, _continent);
+                foreach (var item in flags)
+                {
+                    item.DrawFlag(e.Graphics, _continent);
+                }
             }
-
         }
-
         private void pictureBoxFlag_Click(object sender, EventArgs e)
-        {
-        }
+        {           
 
+        }
         private void pictureBoxFlag_MouseClick(object sender, MouseEventArgs e)
         {
             foreach (Flags flags in flags)
@@ -226,9 +279,24 @@ namespace GeographyGame
                 flags.isMouseOn(e.Y);
                 if (flags.isMouseOn(e.Y))
                 {
+                    currentFlag = flags;
                     Console.WriteLine(flags.fName);
                 }
             }
+            pictureBoxFlag.Invalidate();
+        }
+        public void Drawflags()
+        {
+            foreach (Flags flags in flags)
+            {
+                flags.DrawFlag(pictureBoxFlag.CreateGraphics(), _continent);
+            }
+            pictureBoxFlag.Invalidate();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

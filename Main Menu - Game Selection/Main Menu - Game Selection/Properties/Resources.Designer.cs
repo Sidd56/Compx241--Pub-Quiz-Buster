@@ -63,9 +63,39 @@ namespace Main_Menu___Game_Selection.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Geo_Game {
+            get {
+                object obj = ResourceManager.GetObject("Geo Game", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Musical_Bingo_Game {
+            get {
+                object obj = ResourceManager.GetObject("Musical Bingo Game", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Pub_Quiz_Buster_Logo {
             get {
                 object obj = ResourceManager.GetObject("Pub_Quiz_Buster_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sci_and_Tech_Game {
+            get {
+                object obj = ResourceManager.GetObject("Sci_and_Tech_Game", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

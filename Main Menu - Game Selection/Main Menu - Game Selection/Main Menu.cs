@@ -21,15 +21,14 @@ namespace Main_Menu___Game_Selection
 
         private void buttonGeography_Click(object sender, EventArgs e)
         {
- 
+            GeographyMenu g = new GeographyMenu();
+            g.ShowDialog();
         }
 
         private void buttonPlayMusicalBingo_Click(object sender, EventArgs e)
         {
-            Hide();
             Music_Menu m = new Music_Menu();
             m.ShowDialog();
-            Close();
         }
 
         private void buttonScience_Click(object sender, EventArgs e)

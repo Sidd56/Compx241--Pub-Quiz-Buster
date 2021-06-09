@@ -32,7 +32,13 @@
             this.buttonScience = new System.Windows.Forms.Button();
             this.buttonGeography = new System.Windows.Forms.Button();
             this.buttonPlayMusicalBingo = new System.Windows.Forms.Button();
+            this.pictureBoxMusicLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSciAndTechLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxGeoLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMusicLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSciAndTechLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGeoLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,7 +47,7 @@
             this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExit.BackColor = System.Drawing.Color.DarkOrchid;
             this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
-            this.buttonExit.Location = new System.Drawing.Point(715, 269);
+            this.buttonExit.Location = new System.Drawing.Point(716, 266);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(73, 44);
             this.buttonExit.TabIndex = 49;
@@ -59,7 +65,7 @@
             this.buttonScience.Name = "buttonScience";
             this.buttonScience.Size = new System.Drawing.Size(259, 67);
             this.buttonScience.TabIndex = 48;
-            this.buttonScience.Text = "Play Science + Tech";
+            this.buttonScience.Text = "Play Sci and Tech";
             this.buttonScience.UseVisualStyleBackColor = false;
             this.buttonScience.Click += new System.EventHandler(this.buttonScience_Click);
             // 
@@ -72,7 +78,7 @@
             this.buttonGeography.Name = "buttonGeography";
             this.buttonGeography.Size = new System.Drawing.Size(259, 67);
             this.buttonGeography.TabIndex = 47;
-            this.buttonGeography.Text = "Play Geography Game";
+            this.buttonGeography.Text = "Play Geo Game";
             this.buttonGeography.UseVisualStyleBackColor = false;
             this.buttonGeography.Click += new System.EventHandler(this.buttonGeography_Click);
             // 
@@ -88,6 +94,45 @@
             this.buttonPlayMusicalBingo.Text = "Play Musical Bingo";
             this.buttonPlayMusicalBingo.UseVisualStyleBackColor = false;
             this.buttonPlayMusicalBingo.Click += new System.EventHandler(this.buttonPlayMusicalBingo_Click);
+            // 
+            // pictureBoxMusicLogo
+            // 
+            this.pictureBoxMusicLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMusicLogo.BackgroundImage = global::Main_Menu___Game_Selection.Properties.Resources.Musical_Bingo_Game;
+            this.pictureBoxMusicLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxMusicLogo.Location = new System.Drawing.Point(387, 136);
+            this.pictureBoxMusicLogo.Name = "pictureBoxMusicLogo";
+            this.pictureBoxMusicLogo.Size = new System.Drawing.Size(67, 67);
+            this.pictureBoxMusicLogo.TabIndex = 53;
+            this.pictureBoxMusicLogo.TabStop = false;
+            // 
+            // pictureBoxSciAndTechLogo
+            // 
+            this.pictureBoxSciAndTechLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxSciAndTechLogo.BackgroundImage = global::Main_Menu___Game_Selection.Properties.Resources.Sci_and_Tech_Game;
+            this.pictureBoxSciAndTechLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxSciAndTechLogo.Location = new System.Drawing.Point(387, 243);
+            this.pictureBoxSciAndTechLogo.Name = "pictureBoxSciAndTechLogo";
+            this.pictureBoxSciAndTechLogo.Size = new System.Drawing.Size(67, 67);
+            this.pictureBoxSciAndTechLogo.TabIndex = 52;
+            this.pictureBoxSciAndTechLogo.TabStop = false;
+            // 
+            // pictureBoxGeoLogo
+            // 
+            this.pictureBoxGeoLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxGeoLogo.BackgroundImage = global::Main_Menu___Game_Selection.Properties.Resources.Geo_Game;
+            this.pictureBoxGeoLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxGeoLogo.Location = new System.Drawing.Point(387, 30);
+            this.pictureBoxGeoLogo.Name = "pictureBoxGeoLogo";
+            this.pictureBoxGeoLogo.Size = new System.Drawing.Size(67, 67);
+            this.pictureBoxGeoLogo.TabIndex = 50;
+            this.pictureBoxGeoLogo.TabStop = false;
             // 
             // pictureBoxLogo
             // 
@@ -107,6 +152,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 325);
+            this.Controls.Add(this.pictureBoxMusicLogo);
+            this.Controls.Add(this.pictureBoxSciAndTechLogo);
+            this.Controls.Add(this.pictureBoxGeoLogo);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonScience);
             this.Controls.Add(this.buttonGeography);
@@ -115,6 +163,9 @@
             this.MinimumSize = new System.Drawing.Size(816, 364);
             this.Name = "Main_Menu";
             this.Text = "Pub Quiz Buster - Main Menu";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMusicLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSciAndTechLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGeoLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
 
@@ -127,6 +178,9 @@
         private System.Windows.Forms.Button buttonGeography;
         private System.Windows.Forms.Button buttonPlayMusicalBingo;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
+        private System.Windows.Forms.PictureBox pictureBoxGeoLogo;
+        private System.Windows.Forms.PictureBox pictureBoxSciAndTechLogo;
+        private System.Windows.Forms.PictureBox pictureBoxMusicLogo;
     }
 }
 
