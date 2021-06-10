@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Science_Game_;
 
 namespace Main_Menu___Game_Selection
 {
@@ -62,7 +63,8 @@ namespace Main_Menu___Game_Selection
 
         private void buttonScience_Click(object sender, EventArgs e)
         {
-
+            Science_Game s = new Science_Game();
+            s.ShowDialog();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

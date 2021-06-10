@@ -226,6 +226,10 @@
       <Project>{A49EE296-288A-4036-9795-0719E365541E}</Project>
       <Name>Pub Busters - Musical Bingo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Science Game!\Science Game!\Science Game!.csproj">
+      <Project>{A329987B-798F-4778-8019-E6DA875B4E75}</Project>
+      <Name>Science Game!</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Pub Quiz Buster Logo.png" />

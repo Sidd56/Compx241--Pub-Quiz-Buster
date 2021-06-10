@@ -39,6 +39,7 @@
             this.labelMessage = new System.Windows.Forms.Label();
             this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.labelFreePlay = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).BeginInit();
             this.SuspendLayout();
@@ -173,11 +174,24 @@
             this.buttonExit.UseVisualStyleBackColor = false;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // labelFreePlay
+            // 
+            this.labelFreePlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFreePlay.AutoSize = true;
+            this.labelFreePlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelFreePlay.Location = new System.Drawing.Point(459, 78);
+            this.labelFreePlay.Name = "labelFreePlay";
+            this.labelFreePlay.Size = new System.Drawing.Size(307, 20);
+            this.labelFreePlay.TabIndex = 46;
+            this.labelFreePlay.Text = "Free Play Mode! Click squares to navigate!";
+            this.labelFreePlay.Visible = false;
+            // 
             // Musical_Bingo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 576);
+            this.Controls.Add(this.labelFreePlay);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.musicPlayer);
             this.Controls.Add(this.labelMessage);
@@ -212,6 +226,7 @@
         private System.Windows.Forms.Label labelMessage;
         private AxWMPLib.AxWindowsMediaPlayer musicPlayer;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Label labelFreePlay;
     }
 }
 
