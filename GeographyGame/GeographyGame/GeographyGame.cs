@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Drawing;
 using MySql.Data.MySqlClient;
 using MySqlCommand = MySql.Data.MySqlClient.MySqlCommand;
 using MySQLConnection = MySql.Data.MySqlClient.MySqlConnection;
@@ -19,8 +18,6 @@ namespace GeographyGame
 {
     public partial class GeographyGame : Form
     {       
-
-
         List<Country> countries;
         List<Country> correctCountries = new List<Country>();
 

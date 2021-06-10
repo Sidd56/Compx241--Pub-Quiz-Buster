@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Main_Menu___Game_Selection
 {
@@ -17,6 +18,34 @@ namespace Main_Menu___Game_Selection
         public Main_Menu()
         {
             InitializeComponent();
+            PlayTitleMusic();
+        }
+
+        private void PlayTitleMusic()
+        {
+            string videoPath = Directory.GetCurrentDirectory() + "\\";
+            bool songFound = false;
+            foreach (string mFile in Directory.GetFiles(Directory.GetCurrentDirectory() + "\\", "Title Music.mp3"))
+            {
+                songFound = true;
+                break;
+            }
+            if (songFound == true)
+            {
+                titleMusicPlayer.URL = videoPath + "Title Music.mp3";
+            }
+        }
+
+        private void pictureBoxTitle_Click(object sender, EventArgs e)
+        {
+            titleMusicPlayer.URL = "";
+            pictureBoxTitle.Hide();
+        }
+
+        private void pictureBoxLogo_Click(object sender, EventArgs e)
+        {
+            pictureBoxTitle.Show();
+            PlayTitleMusic();
         }
 
         private void buttonGeography_Click(object sender, EventArgs e)

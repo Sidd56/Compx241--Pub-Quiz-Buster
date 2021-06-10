@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Music_Menu));
             this.buttonStartGame = new System.Windows.Forms.Button();
             this.comboBoxDecades = new System.Windows.Forms.ComboBox();
             this.progressBarLoading = new System.Windows.Forms.ProgressBar();
@@ -200,6 +201,7 @@
             this.Controls.Add(this.progressBarLoading);
             this.Controls.Add(this.comboBoxDecades);
             this.Controls.Add(this.buttonStartGame);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(413, 280);
             this.Name = "Music_Menu";
             this.Text = "Pub Quiz Buster - Music Menu";

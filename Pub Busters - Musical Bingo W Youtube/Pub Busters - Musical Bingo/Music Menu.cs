@@ -15,8 +15,6 @@ using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
 using MySqlDataAdapter = MySql.Data.MySqlClient.MySqlDataAdapter;
 using MySqlDataReader = MySql.Data.MySqlClient.MySqlDataReader;
 
-using MediaToolkit;
-using MediaToolkit.Model;
 using VideoLibrary;
 
 namespace Pub_Busters___Musical_Bingo
@@ -42,8 +40,6 @@ namespace Pub_Busters___Musical_Bingo
             var vid = youtube.GetVideo(VideoURL);
             string videopath = Path.Combine(source, $"{MP4Name}.mp4");
             File.WriteAllBytes(videopath, vid.GetBytes());
-
-            var inputFile = new MediaFile { Filename = Path.Combine(source, $"{MP4Name}.mp4") };
         }
 
         /// <summary>
@@ -53,7 +49,6 @@ namespace Pub_Busters___Musical_Bingo
         private void ConnectWithDatabase(string mySql)
         {
             popData = new List<SongData>();
-            //string connectionstring = @"datasource=sql6.freesqldatabase.com;port=3306;database=sql6412717;username=sql6412717;password=9B8lPlBL4v";
             string connectionstring = @"datasource=sql6.freesqldatabase.com;port=3306;database=sql6417439;username=sql6417439;password=xlUKVETect";
             MySqlDataReader reader = null;
             MySqlConnection conn = new MySqlConnection(connectionstring);
@@ -66,7 +61,6 @@ namespace Pub_Busters___Musical_Bingo
                 SongData s = new SongData(int.Parse(reader.GetString(0)), reader.GetString(1), reader.GetString(2),
                     int.Parse(reader.GetString(3)), reader.GetString(4), reader.GetString(5));
                 popData.Add(s);
-
             }
         }
 

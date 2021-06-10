@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeographyMenu));
             this.buttonStart = new System.Windows.Forms.Button();
             this.comboBoxContinent = new System.Windows.Forms.ComboBox();
             this.labelLog = new System.Windows.Forms.Label();
@@ -91,6 +92,7 @@
             this.Controls.Add(this.labelLog);
             this.Controls.Add(this.comboBoxContinent);
             this.Controls.Add(this.buttonStart);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(413, 280);
             this.Name = "GeographyMenu";
             this.Text = "Geography Menu";

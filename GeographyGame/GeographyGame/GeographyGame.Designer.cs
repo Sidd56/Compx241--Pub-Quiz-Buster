@@ -199,6 +199,7 @@
             this.Controls.Add(this.trackBarCountryStat);
             this.Controls.Add(this.labelCountryName);
             this.Controls.Add(this.pictureBoxDisplay);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GeographyGame";
             this.Text = "Geo Puzzle";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisplay)).EndInit();

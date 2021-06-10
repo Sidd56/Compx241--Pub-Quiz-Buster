@@ -188,6 +188,7 @@
             this.Controls.Add(this.buttonSkip);
             this.Controls.Add(this.buttonStartGame);
             this.Controls.Add(this.pictureBoxBoard);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(816, 615);
             this.Name = "Musical_Bingo";
             this.Text = "Pub Quiz Buster - Musical Bingo";
