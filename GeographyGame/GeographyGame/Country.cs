@@ -205,7 +205,8 @@ namespace GeographyGame
 
                 filename = d.ToString() + this._name + "_WithFlag.png";
                 Image img = new Bitmap(filename);
-                paper.DrawImage(img, _x, _y, (int)((img.Width * StatOptions[currentOption])), (int)((img.Height * StatOptions[currentOption])));
+                //  paper.DrawImage(img, _x, _y, (int)((img.Width * StatOptions[currentOption])), (int)((img.Height * StatOptions[currentOption])));
+                paper.DrawImage(img, _trueX, _trueY, img.Width, img.Height);
                 this._sizeX = img.Width;
                 this._sizeY = img.Height;
             }

@@ -211,7 +211,7 @@ namespace GeographyGame
                 }
                 else
                 {
-                    Application.Exit();
+                    //Application.Exit();
                 }
             }
             prevCur = current;
